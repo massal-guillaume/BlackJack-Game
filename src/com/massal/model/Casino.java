@@ -17,5 +17,9 @@ public class Casino {
         this.hand.add(carte);
     }
 
+    public List<Carte> getHand(){
+        return this.hand;
+    }
+
 
 }

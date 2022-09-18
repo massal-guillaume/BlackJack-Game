@@ -1,5 +1,6 @@
 package com.massal.view;
 
+import com.massal.model.Casino;
 import com.massal.model.Joueur;
 
 import java.util.Scanner;
@@ -17,13 +18,51 @@ public class View {
         }
         return mise;
     }
-
-    public void affichageCarte(){
-
+    public void victoire(){
+        System.out.println(" Victoire ! ");
+    }
+    public void defaite(){
+        System.out.println(" defaite ! ");
+    }
+    public void egalite(){
+        System.out.println(" egalite ! ");
     }
 
-    public void affichageJetons(){
-    //mise , assurance et jetons restant
+    public void affichageCarte(Joueur joueur, Casino casino){
+        System.out.println(" ");
+        System.out.println("--------------------------------------------");
+        System.out.println(" Carte Joueur : ");
+        for(int i=0 ;i<joueur.getHand().size();i++){
+            System.out.println(" Carte "+i+" "+joueur.getHand().get(i).getRank()+" Valeur : "+joueur.getHand().get(i).getRank().value()+ "\n");
+        }
+        System.out.println(" Carte Casino : ");
+        for(int i=0 ;i<casino.getHand().size();i++){
+            System.out.println(" Carte "+i+" "+casino.getHand().get(i).getRank()+" Valeur : "+casino.getHand().get(i).getRank().value()+"\n");
+        }
+        System.out.println("--------------------------------------------");
+        System.out.println(" ");
+    }
+
+    public void affichageScore(int scoreJoueur, int scoreCasino){
+        System.out.println("Score Joueur : "+scoreJoueur+" Score casino "+scoreCasino+"\n");
+    }
+
+    public void affichageJetons(Joueur joueur){
+        System.out.println(" ");
+        System.out.println("--------------------------------------------");
+        System.out.println(" Jetons restant : "+joueur.getJetons()+"\n");
+    }
+    public void affichageMise(Joueur joueur){
+        System.out.println(" ");
+        System.out.println(" Mise en cours : "+joueur.getMise()+"\n");
+    }
+    public void affichageMiseSplit(Joueur joueur){
+        System.out.println(" ");
+        System.out.println(" Mise en cours : "+joueur.getMisesplited()+"\n");
+    }
+    public void affichageAssurance(Joueur joueur){
+        System.out.println(" ");
+        System.out.println(" Assurance en cours : "+joueur.getMise()+"\n");
     }
 
 

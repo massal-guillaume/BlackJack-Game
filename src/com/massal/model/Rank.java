@@ -18,8 +18,12 @@ public enum Rank {
 
     final int valueOfTheCard;
 
-    Rank (int valueOfTheCard){
-        this.valueOfTheCard = valueOfTheCard;
+    private Rank(int value){
+        valueOfTheCard=value;
+    }
+
+    public int value(){
+        return valueOfTheCard;
     }
 
 }

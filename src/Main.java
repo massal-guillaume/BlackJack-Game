@@ -1,5 +1,12 @@
+import com.massal.controller.GameControlleur;
+import com.massal.view.View;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        View view = new View();
+        GameControlleur controlleur = new GameControlleur(view);
+        controlleur.run();
+
     }
 }

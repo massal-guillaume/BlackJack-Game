@@ -17,6 +17,9 @@ public class Joueur {
         this.hand = new ArrayList<>();
         this.handsplited = new ArrayList<>();
         this.jetons = jetons;
+        this.mise = 0;
+        this.misesplited = 0;
+        this.assurance=0;
     }
 
     public int getAssurance(){
@@ -69,6 +72,19 @@ public class Joueur {
     }
     public int getMisesplited(){
         return this.misesplited;
+    }
+
+    public void gain(int mise,float coeff){
+        this.jetons= this.jetons + mise + (int) (mise*coeff);
+    }
+    public void gainAssurance(int assurance){
+        this.jetons = this.jetons + assurance*2;
+    }
+
+    public void reset(){
+        this.mise =0;
+        this.misesplited = 0;
+        this.assurance=0;
     }
 
 }
