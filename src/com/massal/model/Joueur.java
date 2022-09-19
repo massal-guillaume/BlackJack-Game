@@ -82,9 +82,11 @@ public class Joueur {
     }
 
     public void reset(){
-        this.mise =0;
+        this.mise = 0;
         this.misesplited = 0;
-        this.assurance=0;
+        this.assurance = 0;
+        this.hand = new ArrayList<>();
+        this.handsplited = new ArrayList<>();
     }
 
 }

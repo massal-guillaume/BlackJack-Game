@@ -17,9 +17,11 @@ public class GameControlleur {
     }
 
     private Deck deck;
-    private Casino casino;
-    private Joueur joueur;
-    private View view;
+
+
+    final private Casino casino;
+    final private Joueur joueur;
+    final private View view;
     private EtatduJeux etatduJeux;
     private boolean splited;
     private boolean hasbeensplited;
@@ -106,6 +108,7 @@ public class GameControlleur {
                                     this.joueur.assurance();
                                     this.view.affichageJetons(joueur);
                                     this.view.affichageMise(joueur);
+                                    this.view.affichageMiseSplit(joueur);
                                     this.view.affichageAssurance(joueur);
                                 }
                             }
@@ -118,7 +121,6 @@ public class GameControlleur {
 
             }
         }
-        this.joueur.reset();
         if (hasbeensplited) {
             this.view.affichagebothHand(joueur, casino);
             this.view.affichageScore(checkScore(joueur.getHandsplited()), checkScore(casino.getHand()));
@@ -127,6 +129,14 @@ public class GameControlleur {
         }
         this.view.affichageScore(checkScore(joueur.getHand()), checkScore(casino.getHand()));
         this.view.affichageJetons(joueur);
+        if (joueur.getJetons() > 0) {
+            this.joueur.reset();
+            this.casino.reset();
+            this.etatduJeux = EtatduJeux.initialisation;
+            this.run();
+        } else {
+            this.view.findepartie();
+        }
 
     }
 
@@ -138,14 +148,14 @@ public class GameControlleur {
                 casino.tirerCard(deck.getFirstCarte());
             }
             if (hasbeensplited) {
-                gain(joueur, joueur.getHandsplited(), casino.getHand());
+                gain(joueur, joueur.getHandsplited());
             }
-            gain(joueur, joueur.getHand(), casino.getHand());
+            gain(joueur, joueur.getHand());
             etatduJeux = EtatduJeux.Findepartie;
         }
     }
 
-    public void gain(Joueur joueur, List<Carte> handJoueur, List<Carte> handcasino) {
+    public void gain(Joueur joueur, List<Carte> handJoueur) {
         if (checkScore(handJoueur) == 21) {
             if (checkScore(casino.getHand()) == 21) {
                 joueur.gain(joueur.getMise(), 0);
@@ -209,16 +219,16 @@ public class GameControlleur {
 
     private int checkScore(List<Carte> hand) {
         int score = 0;
-        for (int i = 0; i < hand.size(); i++) {
-            if (hand.get(i).getRank().equals(Rank.As)) {
+        for (Carte carte : hand) {
+            if (carte.getRank().equals(Rank.As)) {
                 int inter = score + 11;
                 if (inter <= 21) {
                     score = inter;
                 } else {
-                    score = score + hand.get(i).getRank().value();
+                    score = score + carte.getRank().value();
                 }
             } else {
-                score = score + hand.get(i).getRank().value();
+                score = score + carte.getRank().value();
             }
         }
         return score;

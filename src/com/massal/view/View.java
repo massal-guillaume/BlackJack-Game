@@ -96,6 +96,12 @@ public class View {
         System.out.println(" ");
     }
 
+    public void findepartie() {
+        System.out.println("--------------------------------------------");
+        System.out.println(" Fin de partie : Vous n'avez plus de jetons ");
+        System.out.println("--------------------------------------------");
+    }
+
     public void affichagebothHand(Joueur joueur, Casino casino) {
         for (int i = 0; i < joueur.getHandsplited().size(); i++) {
             System.out.println(" Carte " + i + " " + joueur.getHandsplited().get(i).getRank() + " Valeur : " + joueur.getHandsplited().get(i).getRank().value() + "\n");

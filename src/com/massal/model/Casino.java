@@ -17,9 +17,12 @@ public class Casino {
         this.hand.add(carte);
     }
 
-    public List<Carte> getHand(){
+    public List<Carte> getHand() {
         return this.hand;
     }
 
+    public void reset() {
+        this.hand = new ArrayList<>();
+    }
 
 }
