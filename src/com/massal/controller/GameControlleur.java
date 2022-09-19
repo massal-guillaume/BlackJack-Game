@@ -119,7 +119,10 @@ public class GameControlleur {
          }
      }
         this.joueur.reset();
-        this.view.split(joueur, casino);
+        if (hasbeensplited) {
+            this.view.split(joueur, casino);
+            this.view.affichageScore(checkScore(joueur.getHandsplited()), checkScore(casino.getHand()));
+        }
         this.view.affichageScore(checkScore(joueur.getHand()), checkScore(casino.getHand()));
         this.view.affichageJetons(joueur);
 
@@ -132,7 +135,7 @@ public class GameControlleur {
         while (checkScore(casino.getHand()) <17){
                 casino.tirerCard(deck.getFirstCarte());
             }
-            if (hasbeensplited = true) {
+            if (hasbeensplited) {
                 gain(joueur, joueur.getHandsplited(), casino.getHand());
             }
             gain(joueur, joueur.getHand(), casino.getHand());
@@ -211,18 +214,6 @@ public class GameControlleur {
         return score;
 
     }
-
-   /*
-    Distribution des cartes
-    Check blackJack
-    Premiere action du joueurs
-
-     */
-
-
-
-
-
 
 
 }
