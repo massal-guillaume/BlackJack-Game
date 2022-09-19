@@ -56,26 +56,30 @@ public class GameControlleur {
                          if (splited) {
                              this.view.actionImpossible();
                          } else {
-                             this.view.affichageMise(joueur);
                              this.joueur.doubler();
-                             this.view.affichageMise(joueur);
                              this.joueur.tirerCardHand(this.deck.getFirstCarte());
-                             this.view.affichageCarte(joueur,casino);
                              this.view.affichageJetons(joueur);
-                             checkBlackJack();
-                             this.view.affichageCarte(joueur,casino);
+                             this.view.affichageMise(joueur);
+                             this.view.affichageCarte(joueur, casino);
+                             if (checkScore(joueur.getHand()) >= 21) {
+                                 findePartie();
+                             }
                          }
                      }
                      break;
                  case "tirer":
                      if (splited) {
                          this.joueur.tirerCarteHandsplited(this.deck.getFirstCarte());
+                         this.view.affigagesplit(joueur, casino);
+                         if (checkScore(joueur.getHandsplited()) >= 21) {
+                             findePartie();
+                         }
                      } else {
                          this.joueur.tirerCardHand(this.deck.getFirstCarte());
-                     }
-                     this.view.affichageCarte(joueur,casino);
-                     if(checkScore(joueur.getHand())>=21){
-                         findePartie();
+                         this.view.affichageCarte(joueur, casino);
+                         if (checkScore(joueur.getHand()) >= 21) {
+                             findePartie();
+                         }
                      }
                      break;
                  case "split":
@@ -86,7 +90,8 @@ public class GameControlleur {
                              if (joueur.getHand().get(0).getRank() == joueur.getHand().get(1).getRank()) {
                                  joueur.split();
                                  splited = true;
-                                 hasbeensplited=true;
+                                 hasbeensplited = true;
+                                 this.view.split(joueur, casino);
                              }
                          } else {
                              this.view.actionImpossible();
@@ -114,9 +119,9 @@ public class GameControlleur {
          }
      }
         this.joueur.reset();
-        this.view.affichageCarte(joueur,casino);
+        this.view.split(joueur, casino);
+        this.view.affichageScore(checkScore(joueur.getHand()), checkScore(casino.getHand()));
         this.view.affichageJetons(joueur);
-        this.view.affichageScore(checkScore(joueur.getHand()),checkScore(casino.getHand()));
 
     }
 

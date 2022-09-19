@@ -79,9 +79,45 @@ public class View {
         return action;
     }
 
-    public void actionImpossible(){
+    public void actionImpossible() {
         System.out.println("Votre action est impossible ! Veuillez en selectioner une autre");
 
+    }
+
+    public void split(Joueur joueur, Casino casino) {
+        System.out.println("Votre avez split votre main !");
+        System.out.println("Vous allez maintenant jouer une main apres l'autre");
+        System.out.println(" ");
+        System.out.println("--------------------------------------------");
+        System.out.println(" Carte Joueur : ");
+        System.out.println(" Main 1 : ");
+        for (int i = 0; i < joueur.getHandsplited().size(); i++) {
+            System.out.println(" Carte " + i + " " + joueur.getHandsplited().get(i).getRank() + " Valeur : " + joueur.getHandsplited().get(i).getRank().value() + "\n");
+        }
+        System.out.println(" Main 2 : ");
+        for (int i = 0; i < joueur.getHand().size(); i++) {
+            System.out.println(" Carte " + i + " " + joueur.getHand().get(i).getRank() + " Valeur : " + joueur.getHand().get(i).getRank().value() + "\n");
+        }
+        System.out.println(" Carte Casino: ");
+        for (int i = 0; i < casino.getHand().size(); i++) {
+            System.out.println(" Carte " + i + " " + casino.getHand().get(i).getRank() + " Valeur : " + casino.getHand().get(i).getRank().value() + "\n");
+        }
+        System.out.println("--------------------------------------------");
+        System.out.println(" ");
+    }
+
+    public void affigagesplit(Joueur joueur, Casino casino) {
+        System.out.println("--------------------------------------------");
+        System.out.println(" Carte Joueur : ");
+        for (int i = 0; i < joueur.getHandsplited().size(); i++) {
+            System.out.println(" Carte " + i + " " + joueur.getHandsplited().get(i).getRank() + " Valeur : " + joueur.getHandsplited().get(i).getRank().value() + "\n");
+        }
+        System.out.println(" Carte Casino : ");
+        for (int i = 0; i < casino.getHand().size(); i++) {
+            System.out.println(" Carte " + i + " " + casino.getHand().get(i).getRank() + " Valeur : " + casino.getHand().get(i).getRank().value() + "\n");
+        }
+        System.out.println("--------------------------------------------");
+        System.out.println(" ");
     }
 
 }
