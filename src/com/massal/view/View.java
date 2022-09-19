@@ -91,6 +91,12 @@ public class View {
         System.out.println("--------------------------------------------");
         System.out.println(" Carte Joueur : ");
         System.out.println(" Main 1 : ");
+        this.affichagebothHand(joueur, casino);
+        System.out.println("--------------------------------------------");
+        System.out.println(" ");
+    }
+
+    public void affichagebothHand(Joueur joueur, Casino casino) {
         for (int i = 0; i < joueur.getHandsplited().size(); i++) {
             System.out.println(" Carte " + i + " " + joueur.getHandsplited().get(i).getRank() + " Valeur : " + joueur.getHandsplited().get(i).getRank().value() + "\n");
         }
@@ -102,8 +108,6 @@ public class View {
         for (int i = 0; i < casino.getHand().size(); i++) {
             System.out.println(" Carte " + i + " " + casino.getHand().get(i).getRank() + " Valeur : " + casino.getHand().get(i).getRank().value() + "\n");
         }
-        System.out.println("--------------------------------------------");
-        System.out.println(" ");
     }
 
     public void affigagesplit(Joueur joueur, Casino casino) {
