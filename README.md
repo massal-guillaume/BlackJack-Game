@@ -1,6 +1,6 @@
 #BlackJack Game
 
-Jeux du Black Jack  en Java en MVC
+Jeux du Black Jack  en Java avec MVC
 
 
 
